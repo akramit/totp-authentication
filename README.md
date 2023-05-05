@@ -1,11 +1,15 @@
 # Time-Based One-Time Password Algorithm
 Time-Based One-Time Password Algorithm or TOTP in short is a time based codes for single use, which is valid only for short duration of time, which protects against any kind of compromise due to short lived nature. This is often used in 2FA (2 Factor authentication) systems. 2FA provides an extra layer of security, by requiring two kind of passwords - something a user knows (like password) and something a user have (like phone to generate OTP). 
 
+The TOTP value is calculated by both the authenticator and authenticatee. The verification is successful only if the provided value matches with the locally generated value. TOTP credentials are based on a shared secret key, and security can be compromised if someone steals the secret key. 
+
 Here, I provide a simple implementation of TOTP in python which anyone can use for their own purpose (or better - write your own;). Below, I have explained the algorithm. 
 
 TOTP is an extension of HOTP (HMAC based One-Time Password) and follows an open standard documented in [RFC6238](https://datatracker.ietf.org/doc/html/rfc6238). 
 
 Authentication Apps supporting TOTP - *Authy, Google Authenticator*
+![Google Authenticator](/goog_auth.png)
+![Zerodha 2FA](/zerodha2fa.png)
 <!-- Put image of Google Authenticator here. -->
 <!-- Example of TOTP  by using Zerodha -->
 
@@ -33,4 +37,7 @@ HOTP(K,C<sub>T</sub>) :
 Usually we have 6 digits OTP. So, we set D=6 in the above steps. We use HMAC-SHA-512 instead of HMAC-SHA-1 for added security. 
  
 
-## Use Case
+## References 
+1. RFC6238 TOTP - https://datatracker.ietf.org/doc/html/rfc6238 
+2. RFC4226 HOTP - https://datatracker.ietf.org/doc/html/rfc4226
+3. Wikipedia - https://en.wikipedia.org/wiki/Time-based_one-time_password
