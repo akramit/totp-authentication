@@ -27,14 +27,18 @@ C<sub>T</sub> = (T - T<sub>0</sub> )/T<sub>X</sub>
 TOTP(K) = HOTP(K,C<sub>T</sub>)
 
 HOTP(K,C<sub>T</sub>) : 
-1. Step 1: Generate an HMAC-SHA-512 value. Let HS = HMAC-SHA-512(K,C)  // HSis a 20-byte string
 
-  2.  Step 2: Generate a 4-byte string (Dynamic Truncation) \
-   Let Sbits = DT(HS)   //  DT, defined below, returns a 31-bit string
+```
+Step 1: Generate an HMAC-SHA-512 value. Let HS = HMAC-SHA-512(K,C)  // HS is a 20-byte string 
 
-  3.  Step 3: Compute an HOTP value
-   Let Snum  = StToNum(Sbits)   // Convert S to a number in 0...2^{31}-1
-   Return D = Snum mod 10^Digit //  D is a number in the range 0...10^{Digit}-1 \
+Step 2: Generate a 4-byte string (Dynamic Truncation)
+   Let Sbits = DT(HS)   //  DT, defined below, returns a 31-bit string 
+
+Step 3: Compute an HOTP value
+   Let Snum  = SToNum(Sbits)   // Convert S to a number in 0...2^{31}-1
+   Return D = Snum mod 10^Digit //  D is a number in the range 0...10^{Digit}-1
+   ```
+   
 Usually we have 6 digits OTP. So, we set D=6 in the above steps. We use HMAC-SHA-512 instead of HMAC-SHA-1 for added security. 
  
 
