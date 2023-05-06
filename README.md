@@ -8,10 +8,11 @@ Here, I provide a simple implementation of TOTP in python which anyone can use f
 TOTP is an extension of HOTP (HMAC based One-Time Password) and follows an open standard documented in [RFC6238](https://datatracker.ietf.org/doc/html/rfc6238). 
 
 Authentication Apps supporting TOTP - *Authy, Google Authenticator*
-![Google Authenticator](/google_auth.png)
-![Zerodha 2FA](/zerodha2fa.png)
+
 <!-- Put image of Google Authenticator here. -->
+<img src="/google_auth.png" width="100" height="100" > <img src="/zerodha2fa.png" width="100" height="100" >
 <!-- Example of TOTP  by using Zerodha -->
+
 
 
 ## Algorithm 
